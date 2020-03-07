@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MostPopuler</string>
+    <string name="others">Other</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="days">Days :</string>
+    <string name="to">To :</string>
+    <string name="from">From :</string>
+    <string name="type">Type :</string>
+    <string name="name">Name</string>
+
+
+</resources>

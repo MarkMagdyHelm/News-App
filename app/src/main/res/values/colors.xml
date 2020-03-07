@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="graylight">#fafafa</color>
+    <color name="txtbordercolor">#4860aa</color>
+    <color name="colorPrimary">#273d95</color>
+    <color name="colorPrimaryDark">#293587</color>
+    <color name="colorAccent">#273d95</color>
+    <color name="color_grey">#C8CCCC</color>
+    <color name="gray">#9FA1A1</color>
+    <color name="text">#122f59</color>
+
+</resources>
