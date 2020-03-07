@@ -1,8 +1,8 @@
 package com.Mark.news
 
 import androidx.lifecycle.LiveData
-import com.Mark.news.vacation.vacationlists.model.MostPopulerDataContract
-import com.Mark.news.vacation.vacationlists.viewmodel.MostPopulerViewModel
+import com.Mark.news.vacation.vacationlists.model.NewsDataContract
+import com.Mark.news.vacation.vacationlists.viewmodel.NewsViewModel
 import com.example.mostpopularapp.ui.mplist.models.Datum
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
@@ -18,9 +18,9 @@ import org.robolectric.RobolectricTestRunner
 @RunWith(RobolectricTestRunner::class)
 class ListViewModelTest {
     //mocking the needed classes
-    private lateinit var viewModel: MostPopulerViewModel
+    private lateinit var viewModel: NewsViewModel
 
-    private val repo: MostPopulerDataContract.Repository = mock()
+    private val repo: NewsDataContract.Repository = mock()
 
     private var mpList: LiveData<List<Datum>> = mock()
     //private val factory: DataSource.Factory<Int, post> = mock()
@@ -29,7 +29,7 @@ class ListViewModelTest {
     @Before
     fun init() {
 
-        viewModel = MostPopulerViewModel(repo, CompositeDisposable())
+        viewModel = NewsViewModel(repo, CompositeDisposable())
 //        viewModel. = mpList
 
     }
@@ -39,8 +39,8 @@ class ListViewModelTest {
     */
     @Test
     fun testGetPostsSuccess() {
-        viewModel.fetchMostPopulerList(7)
-        verify(repo).getMostPopulerList(7)
+        viewModel.fetchNewsList(7)
+        verify(repo).getNewsList(7)
 
     }
 
