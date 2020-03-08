@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.Mark.news.R
-import com.Mark.news.news.model.Pojo.Article
+import com.Mark.news.ui.news.model.Pojo.Article
 import com.squareup.picasso.Picasso
 
 import kotlinx.android.synthetic.main.list_item.view.*

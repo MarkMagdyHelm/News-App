@@ -3,7 +3,7 @@ package com.Mark.news.vacation.vacationlists.di.component
 import com.Mark.news.commons.data.remote.NewsService
 import com.Mark.news.commons.di.component.CoreComponent
 import com.Mark.news.commons.networking.Scheduler
-import com.Mark.news.news.view.NewsListsActivity
+import com.Mark.news.ui.news.view.NewsListsActivity
 import com.Mark.news.vacation.vacationlists.di.NewsListScope
 import com.Mark.news.vacation.vacationlists.di.module.NewsListModule
 

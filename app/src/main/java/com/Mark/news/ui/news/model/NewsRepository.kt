@@ -3,7 +3,7 @@ package com.Mark.news.vacation.vacationlists.model
 import com.Mark.news.commons.extensions.addTo
 import com.Mark.news.commons.extensions.performOnBackOutOnMain
 import com.Mark.news.commons.networking.Scheduler
-import com.Mark.news.news.model.Pojo.NewsResponseObj
+import com.Mark.news.ui.news.model.Pojo.NewsResponseObj
 import com.Mark.news.utils.SingleLiveEvent
 import io.reactivex.disposables.CompositeDisposable
 

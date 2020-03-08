@@ -2,7 +2,7 @@ package com.Mark.news.vacation.vacationlists.viewmodel
 
 
 import androidx.lifecycle.ViewModel
-import com.Mark.news.news.model.Pojo.NewsResponseObj
+import com.Mark.news.ui.news.model.Pojo.NewsResponseObj
 import com.Mark.news.utils.SingleLiveEvent
 import com.Mark.news.vacation.vacationlists.model.NewsDataContract
 

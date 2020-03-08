@@ -1,5 +1,5 @@
 
-package com.Mark.news.news.view
+package com.Mark.news.ui.news.view
 
 import android.content.Intent
 import android.net.Uri
@@ -10,14 +10,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.Mark.news.R
 import com.Mark.news.application.BaseActivity
-import com.Mark.news.news.model.Pojo.Article
+import com.Mark.news.ui.news.model.Pojo.Article
 import com.Mark.news.vacation.vacationlists.adapter.Interaction
 import com.Mark.news.vacation.vacationlists.adapter.NewsListAdapter
 import com.Mark.news.vacation.vacationlists.di.NewsListDH
 import com.Mark.news.vacation.vacationlists.viewmodel.NewsViewModel
 import com.Mark.news.vacation.vacationlists.viewmodel.NewsViewModelFactory
 import kotlinx.android.synthetic.main.activity_news_list.*
-import java.net.URLDecoder
 import javax.inject.Inject
 
 class NewsListsActivity: BaseActivity(), View.OnClickListener,Interaction {
@@ -82,8 +81,7 @@ class NewsListsActivity: BaseActivity(), View.OnClickListener,Interaction {
 
 
     override fun itemsClicked(obj: Article) {
-        val uri: Uri = Uri.parse( "https://www.google.com/search?q="+obj.source!!.name) // missing 'http://' will cause crashed
-
+        val uri: Uri = Uri.parse( obj.url!!) // missing 'http://' will cause crashed
         val intent = Intent(Intent.ACTION_VIEW, uri)
         startActivity(intent)
     }

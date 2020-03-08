@@ -1,6 +1,6 @@
 package com.Mark.news.vacation.vacationlists.adapter
 
-import com.Mark.news.news.model.Pojo.Article
+import com.Mark.news.ui.news.model.Pojo.Article
 
 
 

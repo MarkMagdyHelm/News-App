@@ -3,7 +3,7 @@ package com.Mark.news.vacation.vacationlists.model
 
 import com.Mark.news.commons.data.remote.NewsService
 import com.Mark.news.constants.Constants
-import com.Mark.news.news.model.Pojo.NewsResponseObj
+import com.Mark.news.ui.news.model.Pojo.NewsResponseObj
 import io.reactivex.Single
 
 
