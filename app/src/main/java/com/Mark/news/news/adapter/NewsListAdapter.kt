@@ -56,14 +56,16 @@ class NewsListAdapter :
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(item: Article) = with(itemView) {
-
-            days_tv_value.text = item.description.toString()
-//            when {
-//                (item.media!!.size > 0 && item.media!!.get(0).mediaMetadata!!.size > 0) ->
-                    Picasso.get().load(item.url!!).into(
-                        app_icon
+            title_tv_value.text = item.title.toString()
+            date_tv_value.text = item.publishedAt.toString()
+            dis_tv_value.text = item.description.toString()
+            source_tv_value.text = item.source!!.name.toString()
+            when {
+                (item.urlToImage != null) ->
+                    Picasso.get().load(item.urlToImage!!).into(
+                        newsicon
                     )
-
+            }
 
         }
     }

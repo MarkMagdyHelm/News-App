@@ -10,6 +10,11 @@
     <string name="from">From :</string>
     <string name="type">Type :</string>
     <string name="name">Name</string>
+    <string name="news">News</string>
+    <string name="title">Title</string>
+    <string name="discription">Discription</string>
+    <string name="source">Source</string>
+    <string name="date">Date</string>
 
 
 </resources>

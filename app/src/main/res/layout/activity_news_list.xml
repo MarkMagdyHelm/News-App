@@ -63,7 +63,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="0"
-                android:text="Most Populer"
+                android:text="@string/news"
                 android:textColor="@color/text"
                 android:textSize="21sp" />
         </LinearLayout>
