@@ -10,11 +10,11 @@ interface NewsDataContract {
     interface Repository {
         val newsFailerCallBacks : SingleLiveEvent<String>
         val newsCallBacks : SingleLiveEvent<NewsResponseObj>
-        fun getNewsList(num: Int)
+        fun getNewsList(country: String ,categories: String,sortType: String,searchTxt : String)
     }
 
     interface Remote {
-        fun getNewsList(num: Int): Single<NewsResponseObj>
+        fun getNewsList(country: String ,categories: String,sortType: String,searchTxt : String): Single<NewsResponseObj>
 
 
     }

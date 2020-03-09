@@ -9,8 +9,8 @@ import io.reactivex.Single
 
 class NewsRemoteData(private val newsService: NewsService) : NewsDataContract.Remote {
 
-    override fun getNewsList(num: Int): Single<NewsResponseObj> {
-        return newsService.getMostPopuler(Constants.API_URL+Constants.CONTROLER,"us",Constants.API_KEY)
+    override fun getNewsList(country: String ,categories: String,sortType: String,searchTxt : String): Single<NewsResponseObj> {
+        return newsService.getMostPopuler(Constants.API_URL+Constants.CONTROLER,country,categories,sortType,searchTxt,Constants.API_KEY)
     }
 
     }

@@ -39,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="16dp"
             android:elevation="3dp"
             android:gravity="center_vertical"
@@ -66,6 +66,15 @@
                 android:text="@string/news"
                 android:textColor="@color/text"
                 android:textSize="21sp" />
+            <ImageView
+                android:id="@+id/settings_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_weight="3"
+                android:layout_gravity="center"
+                android:paddingLeft="200dp"
+                app:srcCompat="@drawable/ic_settings" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -77,11 +86,28 @@
             android:paddingBottom="80dp"
             android:scrollbars="none"
             android:background="@android:color/transparent"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout_vacationrequest"></androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@+id/search_et"></androidx.recyclerview.widget.RecyclerView>
+
+        <EditText
+            android:id="@+id/search_et"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:ems="10"
+            android:background="@drawable/rounded_home_icon"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:hint="@android:string/search_go"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:drawableEnd="@drawable/ic_search"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout_vacationrequest" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

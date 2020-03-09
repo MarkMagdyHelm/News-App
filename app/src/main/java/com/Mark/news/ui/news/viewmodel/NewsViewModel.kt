@@ -14,16 +14,19 @@ class NewsViewModel(
     private val compositeDisposable: CompositeDisposable
 ) : ViewModel() {
 //
-    fun fetchNewsList(num : Int)
+    fun fetchNewsList(country: String ,categories: String,sortType: String,searchTxt : String)
     {
-        return repo.getNewsList(num)
+        return repo.getNewsList(country,categories,sortType,searchTxt)
     }
 
     fun newsCallBack(): SingleLiveEvent<NewsResponseObj>
     {
         return repo.newsCallBacks
     }
-
+    fun newsFailerCallBack(): SingleLiveEvent<String>
+    {
+        return repo.newsFailerCallBacks
+    }
 
     override fun onCleared() {
         super.onCleared()

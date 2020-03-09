@@ -19,8 +19,8 @@ class NewsRepository(
 
 
 
-    override fun getNewsList(vacationPostObj: Int){
-        remote.getNewsList(vacationPostObj).performOnBackOutOnMain(scheduler)
+    override fun getNewsList(country: String ,categories: String,sortType: String,searchTxt : String){
+        remote.getNewsList(country,categories,sortType,searchTxt).performOnBackOutOnMain(scheduler)
             .subscribe({ res ->
                 if (res != null) {
                     if (res.articles!!.size!! < 0) {

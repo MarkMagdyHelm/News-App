@@ -22,14 +22,15 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
-        //check if user entered settings before or it's first time
+
+
+        //check if user open setting or this is the firstTime
+        if(intent.getIntExtra("comeFrom",0)==0)
         CheckSittingsEntered()
         //setup counters spinnner
         setupSpinner()
         //set onclick listenrt
         initOnClick()
-        //initial value to categorylist
-        checkCategoriesList("business")
     }
 
     private fun CheckSittingsEntered() {
@@ -102,7 +103,10 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
                 checkCategoriesList(technology_btn.text.toString())
             }
             R.id.next -> {
-                saveSettings(SettingsObj(lang!!, categoriesList))
+                if(categoriesList.size>0)
+                saveSettings(SettingsObj(lang!!, categoriesList,"publishedAt"))
+                else
+                    Toast.makeText(this, getString(R.string.validation), Toast.LENGTH_LONG).show()
             }
 
         }
@@ -139,11 +143,13 @@ class SettingActivity : AppCompatActivity(), View.OnClickListener {
         val objString = gson.toJson(obj)
         PreferenceManager.getDefaultSharedPreferences(this).edit()
             .putString(Constants.USER_SETTINGS, objString).apply()
+
         navigatation()
     }
 
     //naviagte to next screen
     fun navigatation() {
+
         val intent = Intent(this, NewsListsActivity::class.java)
         startActivity(intent)
         finish()

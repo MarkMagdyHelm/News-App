@@ -6,4 +6,5 @@ import com.google.gson.annotations.SerializedName
 
 data class SettingsObj (
     var lang: String? = null,
-    var categories: ArrayList<String>? = null)
+    var categories: ArrayList<String>? = null,var sortingBy: String? = null
+)

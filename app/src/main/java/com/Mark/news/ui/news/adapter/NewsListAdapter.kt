@@ -57,7 +57,7 @@ class NewsListAdapter :
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(item: Article) = with(itemView) {
             title_tv_value.text = item.title.toString()
-            date_tv_value.text = item.publishedAt.toString()
+            date_tv_value.text = item.publishedAt.toString().substring(0, 10);
             dis_tv_value.text = item.description.toString()
             source_tv_value.text = item.source!!.name.toString()
             when {
@@ -76,4 +76,5 @@ class NewsListAdapter :
         @SuppressLint("DiffUtilEquals")
         override fun areContentsTheSame(oldItem: Article, newItem: Article) = oldItem == newItem
     }
+
 }
