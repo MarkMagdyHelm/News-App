@@ -16,6 +16,8 @@
     <string name="source">Source</string>
     <string name="date">Date</string>
     <string name="validation">You should choose only 3 category</string>
+    <string name="fail">fail to load data</string>
+    <string name="network_check">Please check your network</string>
     <string-array name="Langs">
         <item>ae</item>
         <item>ar</item>

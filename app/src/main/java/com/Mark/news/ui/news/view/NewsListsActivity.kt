@@ -1,18 +1,22 @@
 package com.Mark.news.ui.news.view
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.Mark.news.R
 import com.Mark.news.application.BaseActivity
 import com.Mark.news.constants.Constants
+
 import com.Mark.news.ui.news.model.Pojo.Article
 import com.Mark.news.ui.settings.SettingActivity
 import com.Mark.news.ui.settings.SettingsObj
@@ -29,8 +33,8 @@ import javax.inject.Inject
 class NewsListsActivity : BaseActivity(), View.OnClickListener, Interaction {
 
     var settingsObjs = SettingsObj()
-    var categories : String? =""
-    var query : String? =""
+    var categories: String? = ""
+    var query: String? = ""
     private val component by lazy { NewsListDH.listComponent() }
 
     @Inject
@@ -65,16 +69,22 @@ class NewsListsActivity : BaseActivity(), View.OnClickListener, Interaction {
         rvPosts.adapter = newsAdapter
         rvPosts.layoutManager = LinearLayoutManager(this)
     }
-
-
     private fun bindViewModel() {
-        progressBar.setVisibility(View.VISIBLE)
-        viewModel.fetchNewsList(settingsObjs.lang!!,preparCategories(settingsObjs.categories!!),settingsObjs.sortingBy!!,query!!)
-        viewModel.newsCallBack().removeObservers(this)
-        viewModel.newsCallBack().observe(this, Observer {
-            initAdapter(it.articles!!)
-        })
 
+
+        if (isConnectedToNetwork()) {
+            progressBar.setVisibility(View.VISIBLE)
+            viewModel.fetchNewsList(
+                settingsObjs.lang!!,
+                preparCategories(settingsObjs.categories!!),
+                settingsObjs.sortingBy!!,
+                query!!
+            )
+            viewModel.newsCallBack().removeObservers(this)
+            viewModel.newsFailerCallBack().removeObservers(this)
+            viewModel.newsCallBack().observe(this, Observer { initAdapter(it.articles!!) })
+        } else
+            Toast.makeText(this, getString(R.string.network_check), Toast.LENGTH_LONG).show()
     }
 
     private fun initAdapter(listItems: List<Article>) {
@@ -94,9 +104,10 @@ class NewsListsActivity : BaseActivity(), View.OnClickListener, Interaction {
             }
         }
     }
-     fun preparCategories(list: ArrayList<String>) : String {
-         for(i in list)
-             categories = categories+i+","
+
+    fun preparCategories(list: ArrayList<String>): String {
+        for (i in list)
+            categories = categories + i + ","
         return categories!!.dropLast(1)
     }
 
@@ -113,7 +124,7 @@ class NewsListsActivity : BaseActivity(), View.OnClickListener, Interaction {
         return gson.fromJson(user, SettingsObj::class.java)
     }
 
-//handling search on textwatcher
+    //handling search on textwatcher
     private val generalTextWatcher: TextWatcher = object : TextWatcher {
         override fun onTextChanged(
             s: CharSequence, start: Int, before: Int,
@@ -127,13 +138,25 @@ class NewsListsActivity : BaseActivity(), View.OnClickListener, Interaction {
                     search_et.getText().toString().toByteArray(),
                     StandardCharsets.UTF_8
                 )
-                progressBar.visibility=View.VISIBLE
-                viewModel.fetchNewsList(settingsObjs.lang!!,preparCategories(settingsObjs.categories!!),settingsObjs.sortingBy!!,query!!)
+                progressBar.visibility = View.VISIBLE
+                viewModel.fetchNewsList(
+                    settingsObjs.lang!!,
+                    preparCategories(settingsObjs.categories!!),
+                    settingsObjs.sortingBy!!,
+                    query!!
+                )
 
                 //                mNewsModel.getNewsFromServerByName(query);
             }
         }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+    }
+
+    fun isConnectedToNetwork(): Boolean {
+        val connectivityManager =
+            this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
+        return connectivityManager?.activeNetworkInfo?.isConnectedOrConnecting() ?: false
+
     }
 }
